@@ -10,12 +10,12 @@ import java.util.List;
 
 @Data
 public class ResponseBody<T> {
-    T metadata;
+    T data;
     List<ResponseError> errors;
     String timestamp;
 
-    public ResponseBody(T metadata, List<ResponseError> errors, HttpStatus status) {
-        this.metadata = metadata;
+    public ResponseBody(T data, List<ResponseError> errors, HttpStatus status) {
+        this.data = data;
         this.errors = errors != null ? errors : new ArrayList<>();
         this.timestamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:sss'Z'")
                 .format(new Date(System.currentTimeMillis()));

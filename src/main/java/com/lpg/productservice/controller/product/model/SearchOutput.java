@@ -10,12 +10,11 @@ import com.lpg.productservice.model.response.PageableResponse;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.Lob;
 import java.util.List;
 
-public class SearchOutput<T extends List<SearchOutput.SearchOutputData>> extends PageableResponse.PageableResponseData<T> {
+public class SearchOutput<T extends SearchOutput.SearchOutputData> extends PageableResponse.PageableResponseData<T> {
 
-    public SearchOutput(T data, Integer pageNumber, Integer totalPages, Long totalCount) {
+    public SearchOutput(List<T> data, Integer pageNumber, Integer totalPages, Long totalCount) {
         super(data, pageNumber, totalPages, totalCount);
     }
 

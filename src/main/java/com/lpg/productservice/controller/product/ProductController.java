@@ -1,9 +1,11 @@
 package com.lpg.productservice.controller.product;
 
 import com.lpg.productservice.controller.product.model.SearchInput;
+import com.lpg.productservice.controller.product.model.SearchOutput;
 import com.lpg.productservice.domain.Product;
 import com.lpg.productservice.model.response.LpgResponse;
 import com.lpg.productservice.model.response.OKResponse;
+import com.lpg.productservice.model.response.PageableResponse;
 import com.lpg.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,9 +39,9 @@ public class ProductController {
     }
 
     @GetMapping("/search")
-    public LpgResponse<List<Product>> search(SearchInput input) {
+    public LpgResponse<PageableResponse.PageableResponseData> search(SearchInput input) {
         log.debug("ProductController.search: " + input.toString());
 
-        return new OKResponse(productService.search(input));
+        return new PageableResponse(productService.search(input));
     }
 }
