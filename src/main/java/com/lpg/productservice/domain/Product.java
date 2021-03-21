@@ -27,8 +27,8 @@ public class Product extends AuditDetails {
     @Column(name="DESCRIPTION")
     private String description;
 
-    // @Enumerated(EnumType.STRING)
-    @Column(name="CATEGORY_ID")
+    @Enumerated(EnumType.STRING)
+    @Column(name="CATEGORY")
     private Category category;
 
     @Column(name="LAST_PURCHASED_DATE")
