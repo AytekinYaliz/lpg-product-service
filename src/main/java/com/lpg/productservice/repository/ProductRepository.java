@@ -15,23 +15,4 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    // Page<Product> findAll(Pageable pageable);
-
-//    public List<Product> findByLastName(String lastName);
 }
-
-
-//public interface ExamRepository extends JpaRepository<Exam, Long>, JpaSpecificationExecutor<Exam> {
-//}
-
-//public interface SchoolRepository extends JpaRepository<School, Integer> {
-//    @Query("select new com.kypnt.edutest.testcentreservice.controller.school.model.SchoolDto(s.eduwayId,s.titleKz,s.schoolType,s.parentEduwayId) " +
-//            "from School s order by s.titleKz asc")
-//    List<SchoolDto> findAllByOrderByTitleKzAsc();
-//
-//    @Query("select new com.kypnt.edutest.testcentreservice.controller.school.model.SchoolDto(s.eduwayId,s.titleRu,s.schoolType,s.parentEduwayId) " +
-//            "from School s order by s.titleRu asc")
-//    List<SchoolDto> findAllByOrderByTitleRuAsc();
-//
-//    Optional<School> findByIdAndSchoolType(Integer id, SchoolTypeEnum type);
-//}

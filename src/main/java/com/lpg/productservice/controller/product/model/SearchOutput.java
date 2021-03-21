@@ -1,10 +1,5 @@
 package com.lpg.productservice.controller.product.model;
 
-// import com.kypnt.edutest.testcentreservice.controller.AuditDetailsOutput;
-// import com.kypnt.edutest.testcentreservice.model.enums.QuestionStatusEnum;
-// import com.kypnt.edutest.testcentreservice.model.enums.QuestionTypeEnum;
-// import com.kypnt.edutest.testcentreservice.model.response.PageableResponse;
-// import io.swagger.annotations.ApiModel;
 import com.lpg.productservice.model.enums.Category;
 import com.lpg.productservice.model.response.PageableResponse;
 import lombok.Builder;
