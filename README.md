@@ -3,10 +3,10 @@
 - clone or download the repository on to your local machine
 - from a terminal run the following command
 ```
-  ./gradlew clean build
-  ./gradlew bootRun --args='--spring.profiles.active=local'
+  ./mvnw clean install
+  ./mvnw spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=local
 ```
 The application:
-- will run on http://localhost:3001
-- will connect to Atlas Mongo DB
+- will run on http://localhost:8080
+- will connect to H2 embedded da
 - will have Swagger UI on  http://localhost:3001/swagger-ui/index.html
