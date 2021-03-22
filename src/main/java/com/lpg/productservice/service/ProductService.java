@@ -1,5 +1,6 @@
 package com.lpg.productservice.service;
 
+import com.lpg.productservice.controller.product.model.CreateInput;
 import com.lpg.productservice.controller.product.model.SearchInput;
 import com.lpg.productservice.controller.product.model.SearchOutput;
 import com.lpg.productservice.model.enums.Category;
@@ -8,16 +9,16 @@ import com.lpg.productservice.repository.ProductRepository;
 import io.micrometer.core.instrument.util.StringUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.time.TimeZones;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -57,5 +58,20 @@ public class ProductService {
                 ).collect(Collectors.toList());
 
         return new SearchOutput(data, productsPage.getNumber(), productsPage.getTotalPages(), productsPage.getTotalElements());
+    }
+
+    public Long create(CreateInput input) {
+        log.debug("ProductService.create: " + input.toString());
+
+        Product product = Product.builder()
+                .name(input.getName())
+                .description(input.getDescription())
+                .category(input.getCategory())
+                .createdAt(OffsetDateTime.now(ZoneOffset.UTC))
+                .build();
+
+        productRepository.save(product);
+
+        return product.getId();
     }
 }

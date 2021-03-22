@@ -8,5 +8,7 @@
 ```
 The application:
 - will run on http://localhost:8080
-- will connect to H2 embedded da
-- will have Swagger UI on  http://localhost:3001/swagger-ui/index.html
+- will connect to H2 embedded db locally
+  
+ToDo:
+- Swagger UI on /swagger-ui/index.html

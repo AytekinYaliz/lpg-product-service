@@ -1,19 +1,21 @@
 package com.lpg.productservice.controller.product;
 
+import com.lpg.productservice.controller.product.model.CreateInput;
+import com.lpg.productservice.controller.product.model.CreateOutput;
 import com.lpg.productservice.controller.product.model.SearchInput;
 import com.lpg.productservice.controller.product.model.SearchOutput;
 import com.lpg.productservice.domain.Product;
+import com.lpg.productservice.model.IdOutput;
+import com.lpg.productservice.model.response.CreatedResponse;
 import com.lpg.productservice.model.response.LpgResponse;
 import com.lpg.productservice.model.response.OKResponse;
 import com.lpg.productservice.model.response.PageableResponse;
 import com.lpg.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Slf4j
@@ -43,5 +45,14 @@ public class ProductController {
         log.debug("ProductController.search: " + input.toString());
 
         return new PageableResponse(productService.search(input));
+    }
+
+    @PostMapping
+    public LpgResponse<CreateOutput> create(@Valid @RequestBody CreateInput input) {
+        log.debug("ProductController.create: " + input.toString());
+
+        CreateOutput output = new CreateOutput(productService.create(input));
+
+        return new CreatedResponse<>(output);
     }
 }
