@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class IdName<T> {
+public class IdNameDto<T> {
 
     private T id;
     private String name;

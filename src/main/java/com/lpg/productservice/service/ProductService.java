@@ -30,22 +30,16 @@ public class ProductService {
     private final ProductRepository productRepository;
 
     public List<Product> getAll() {
-        log.debug("ProductService.getAll");
-
         return StreamSupport
                 .stream(productRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }
 
     public Product getById(Long id) {
-        log.debug("ProductService.getOne");
-
         return productRepository.findById(id).orElse(null);
     }
 
     public SearchOutput search(SearchInput input) {
-        log.debug("ProductService.search: " + input.toString());
-
         Pageable pageable = Utils.getPageable(input);
         Page<Product> productsPage = productRepository.findAll(pageable);
         List<SearchOutput.SearchOutputData> data = productsPage.stream()
@@ -61,8 +55,6 @@ public class ProductService {
     }
 
     public Long create(CreateInput input) {
-        log.debug("ProductService.create: " + input.toString());
-
         Product product = Product.builder()
                 .name(input.getName())
                 .description(input.getDescription())

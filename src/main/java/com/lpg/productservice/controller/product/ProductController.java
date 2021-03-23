@@ -1,11 +1,11 @@
 package com.lpg.productservice.controller.product;
 
+import com.lpg.productservice.advice.ExecutionTimeTracker;
 import com.lpg.productservice.controller.product.model.CreateInput;
 import com.lpg.productservice.controller.product.model.CreateOutput;
 import com.lpg.productservice.controller.product.model.SearchInput;
 import com.lpg.productservice.controller.product.model.SearchOutput;
 import com.lpg.productservice.domain.Product;
-import com.lpg.productservice.model.IdOutput;
 import com.lpg.productservice.model.response.CreatedResponse;
 import com.lpg.productservice.model.response.LpgResponse;
 import com.lpg.productservice.model.response.OKResponse;
@@ -26,31 +26,27 @@ public class ProductController {
 
     private final ProductService productService;
 
+    @ExecutionTimeTracker
     @GetMapping
     public LpgResponse<List<Product>> getAll() {
-        log.debug("ProductController.getAll");
-
         return new OKResponse(productService.getAll());
     }
 
+    @ExecutionTimeTracker
     @GetMapping("/{id}")
     public LpgResponse<Product> getOne(@PathVariable Long id) {
-        log.debug("ProductController.getOne");
-
         return new OKResponse(productService.getById(id));
     }
 
+    @ExecutionTimeTracker
     @GetMapping("/search")
     public LpgResponse<PageableResponse.PageableResponseData> search(SearchInput input) {
-        log.debug("ProductController.search: " + input.toString());
-
         return new PageableResponse(productService.search(input));
     }
 
+    @ExecutionTimeTracker
     @PostMapping
     public LpgResponse<CreateOutput> create(@Valid @RequestBody CreateInput input) {
-        log.debug("ProductController.create: " + input.toString());
-
         CreateOutput output = new CreateOutput(productService.create(input));
 
         return new CreatedResponse<>(output);

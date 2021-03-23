@@ -5,6 +5,6 @@ import lombok.*;
 @Getter
 @Setter
 @AllArgsConstructor
-public class IdOutput<T> {
+public class IdDto<T> {
     private T id;
 }
