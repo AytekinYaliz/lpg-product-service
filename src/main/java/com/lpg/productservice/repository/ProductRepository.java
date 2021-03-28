@@ -15,4 +15,10 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
+    @Query("" +
+            "SELECT CASE WHEN COUNT(p) > 0 THEN TRUE ELSE FALSE END " +
+            "FROM Product p " +
+            "WHERE p.name = ?1"
+    )
+    Boolean selectExistsProduct(String name);
 }

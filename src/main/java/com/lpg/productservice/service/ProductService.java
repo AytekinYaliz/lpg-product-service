@@ -59,7 +59,6 @@ public class ProductService {
                 .name(input.getName())
                 .description(input.getDescription())
                 .category(input.getCategory())
-                .createdAt(OffsetDateTime.now(ZoneOffset.UTC))
                 .build();
 
         productRepository.save(product);
