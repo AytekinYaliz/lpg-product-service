@@ -3,3 +3,8 @@ spring:
   application:
     name: product-service
 
+logging:
+  level:
+    com:
+      lpg: TRACE
+    root: INFO

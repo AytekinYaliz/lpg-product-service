@@ -17,7 +17,7 @@ public class ExecutionTimeTrackerAdvice {
         long startTime = System.currentTimeMillis();
         Object obj = pjp.proceed();
         long endTime = System.currentTimeMillis();
-        log.info(pjp.getTarget().getClass().getName() + "." + pjp.getSignature().getName() + ": " + (endTime - startTime) + " msec");
+        log.trace(pjp.getTarget().getClass().getName() + "." + pjp.getSignature().getName() + ": " + (endTime - startTime) + " msec");
         return obj;
     }
 }
